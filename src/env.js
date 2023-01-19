@@ -1,4 +1,4 @@
-const { cleanEnv, str, email, port, host, bool, num } = require('envalid');
+const { cleanEnv, str, port, host, bool } = require('envalid');
 
 const env = cleanEnv(process.env, {
     // Port of application running
