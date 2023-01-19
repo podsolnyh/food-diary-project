@@ -3,10 +3,9 @@ const statusCodeMessages = require('../constants/status-code-messages');
 const ResponseFormat = require('../helpers/response-format');
 const createError = require('../classes/logger').createError;
 
-// eslint-disable-next-line no-unused-vars
 const exceptionsHandler = async (err, req, res) => {
     await createError(res, err);
-    //If it's expected exception with defined http code
+  
     if (Object.values(ReasonPhrases).includes(err.name)) {
         // From my messages collection OR from standart reason messages list
         const message =
@@ -18,7 +17,7 @@ const exceptionsHandler = async (err, req, res) => {
                 name: err.name,
             }),
         );
-        //Or if it's totally unexpected and everything is BAD
+    
     } else {
         res.status(500).json(
             ResponseFormat.error(500, 'Unexpected error', {
