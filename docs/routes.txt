@@ -1,0 +1,66 @@
+auth
+
+    POST /auth/register
+        => {
+            username: string,
+            email:    string,
+            password: string,
+            profile: {
+                first_name: string,
+                age: number,
+                gender: 'male' | 'female',
+                lifestyle: 'passive' | 'moderate' | 'average' | 'high' | 'athlete',
+                weight: float,
+                height: float,
+                desired_weight: float
+            }
+        }
+
+    GET /auth/login
+        => {
+            username | email: string,
+            password: string
+        }
+
+    GET /auth/logout
+
+------------------------------------------------------------------------------------------------------------------------
+
+users
+
+    user
+        -- users
+            GET /user/me                            UserController.readMe
+            PUT /user/me/profile                    UserController.updateProfileMe
+            PUT /user/me/credentials                UserController.updateCredentialsMe
+            DELETE /user/me                         UserController.deleteMe
+        -- journal
+            GET /user/me/journal                    JournalController.readItems
+            POST /user/me/journal                   JournalController.createItem
+            DELETE /user/me/journal                 JournalController.deleteItem
+            PUT /user/me/journal                    JournalController.updateItem
+    admin
+        -- users
+            GET /user                               UserController.readList
+            GET /user/:user_id                      UserController.readByID
+            PUT /user/:user_id/profile              UserController.updateProfileByID
+            PUT /user/:user_id/credentials          UserController.updateCredentialsByID
+            DELETE /user/:user_id                   UserController.deleteByID
+        -- roles of users
+            PUT /user/:id/roles/makeAdmin           UserRolesController.readByID
+            PUT /user/:id/roles/makeUser            UserRolesController.updateByID
+
+food
+    user
+        GET /food/dish                              DishController.readList
+        GET /food/dish/:id                          DishController.readByID
+        GET /food/dish/:id/recipe                   DishController.readByDishID
+
+        POST /food/dish/request                     DishRequestController.create
+
+        GET /food/ingredient
+        GET /food/ingredient/:id
+
+    admin
+
+        ...
