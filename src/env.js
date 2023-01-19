@@ -15,15 +15,6 @@ const env = cleanEnv(process.env, {
     DB_DIALECT: str(),
     DB_USE_LOGGING: bool(),
 
-    // Auth data for mailer
-    MAILER_HOSTNAME: host(),
-    MAILER_PORT: port(),
-    MAILER_USE_SECURED_CONNECTION: bool(),
-    MAILER_MAX_CONNECTIONS: num(),
-    MAILER_AUTH_EMAIL: email(),
-    MAILER_AUTH_PASSWORD: str(),
-    MAILER_SITE_NAME: str(),
-
     // Auth data for mongo logger
     MONGO_HOST: host(),
     MONGO_PORT: port(),
