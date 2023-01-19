@@ -7,7 +7,7 @@ const exceptionsHandler = async (err, req, res) => {
     await createError(res, err);
   
     if (Object.values(ReasonPhrases).includes(err.name)) {
-        // From my messages collection OR from standart reason messages list
+       
         const message =
             err.message ||
             statusCodeMessages[err.status] ||
